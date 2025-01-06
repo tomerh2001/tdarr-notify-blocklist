@@ -2,6 +2,10 @@
   "name": "tdarr-notify-blocklist",
   "module": "index.ts",
   "type": "module",
+  "scripts": {
+    "start": "bun src/index.ts",
+    "test": "xo"
+  },
   "devDependencies": {
     "@codedependant/semantic-release-docker": "^5.1.0",
     "@semantic-release/changelog": "^6.0.3",
@@ -10,13 +14,14 @@
     "@semantic-release/github": "^11.0.1",
     "@semantic-release/npm": "^12.0.1",
     "@semantic-release/release-notes-generator": "^14.0.3",
+    "eslint-plugin-th-rules": "^1.15.6",
     "bun-types": "latest",
     "xo": "^0.60.0"
   },
   "peerDependencies": {
     "typescript": "^5.7.2"
   },
-  "scripts": {
-    "test": "xo"
+  "dependencies": {
+    "pino": "^9.6.0"
   }
 }

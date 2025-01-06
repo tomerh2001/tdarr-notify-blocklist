@@ -1,0 +1,17 @@
+{
+    "rules": {
+        "unicorn/prevent-abbreviations": [
+            "error",
+            {
+                "replacements": {
+                    "idx": false
+                }
+            }
+        ],
+        "n/file-extension-in-import": "off",
+        "import/no-cycle": "off"
+    },
+    "extends": [
+        "plugin:th-rules/recommended-typescript"
+    ]
+}
