@@ -3,20 +3,22 @@
 
 import axios from 'axios';
 import {radarrApiKey, radarrUrl} from './environment';
+import {type TdarrHealthcheckRecord} from './tdarr.d';
+import {type RadarrMovieRecord} from './radarr.d';
 
-export const radarrAxios = axios.create({baseURL: radarrUrl});
-radarrAxios.interceptors.request.use(config => {
-	config.params ||= {};
-	config.params.apikey = radarrApiKey;
-	return config;
-});
+export const radarrAxios = axios.create({baseURL: radarrUrl, headers: {'X-Api-Key': radarrApiKey}});
 
-export async function getRadarrMovieId(filename: string) {
-	for await (const record of getRadarrHistory()) {
-		if (record.sourceTitle === filename) {
+export async function getRadarrMovieId(tdarrRecord: TdarrHealthcheckRecord) {
+	for await (const record of await getRadarMovies()) {
+		if (record.movieFile?.path === tdarrRecord.file) {
 			return record.id;
 		}
 	}
+}
+
+export async function getRadarMovies(): Promise<RadarrMovieRecord[]> {
+	const result = await radarrAxios.get('/api/v3/movie');
+	return result.data;
 }
 
 export async function * getRadarrHistory() {

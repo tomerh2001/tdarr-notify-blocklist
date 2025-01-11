@@ -2,10 +2,11 @@
 
 import axios from 'axios';
 import {tdarrUrl} from './environment';
+import {type TdarrHealthcheckResponse} from './tdarr.d';
 
 export const tdarrAxios = axios.create({baseURL: tdarrUrl});
 
-export async function getFailedHealthChecks() {
+export async function getFailedHealthChecks(): Promise<TdarrHealthcheckResponse> {
 	const result = await tdarrAxios.post('/api/v2/client/status-tables', {
 		data: {
 			opts: {table: 'table6'},
