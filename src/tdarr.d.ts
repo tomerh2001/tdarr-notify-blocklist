@@ -4,7 +4,7 @@ export type TdarrHealthcheckResponse = {
 };
 export type TdarrHealthcheckRecord = {
 	file: string;
-	meta: {
+	meta?: {
 		FileName: string;
 		Directory: string;
 		FileType: string;

@@ -3,6 +3,7 @@
 import axios from 'axios';
 import {sonarrApiKey, sonarrUrl} from './environment';
 import {type TdarrHealthcheckRecord} from './tdarr.d';
+import {type SonarrSeriesRecord} from './sonarr.d';
 
 export const sonarrAxios = axios.create({baseURL: sonarrUrl, headers: {'X-Api-Key': sonarrApiKey}});
 
@@ -14,7 +15,7 @@ export async function getSonarrSeriesId(tdarrRecord: TdarrHealthcheckRecord) {
 	}
 }
 
-export async function getSonarrSeries() {
+export async function getSonarrSeries(): Promise<SonarrSeriesRecord[]> {
 	const result = await sonarrAxios.get('/api/v3/series');
 	return result.data;
 }

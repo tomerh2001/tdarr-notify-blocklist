@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 
 /* eslint-disable n/prefer-global/process */
 /* eslint-disable unicorn/no-process-exit */
@@ -26,17 +27,21 @@ if (failedFiles.totalCount === 0) {
 
 logger.child({count: failedFiles.totalCount}).info('Got the failed health checks from Tdarr, going over them...');
 for (const failedFile of failedFiles.array) {
-	const {filename} = parseFilePath(failedFile.file);
+	if (!failedFile.meta) {
+		logger.child({file: failedFile.file}).warn('Failed file does not have metadata, skipping...');
+		continue;
+	}
 
-	logger.child({filename}).info('Searching for movie in Radarr or Sonarr...');
+	const {FileName} = failedFile.meta;
+
 	const radarrId = await getRadarrMovieId(failedFile);
 	const sonarrId = await getSonarrSeriesId(failedFile);
 
 	if (radarrId) {
-		logger.child({filename, radarrId}).info('Found file in Radarr');
+		logger.child({FileName, radarrId}).info('Found file in Radarr');
 	} else if (sonarrId) {
-		logger.child({filename, sonarrId}).info('Found file in Sonarr');
+		logger.child({FileName, sonarrId}).info('Found file in Sonarr');
 	} else {
-		logger.child({filename}).warn('Movie not found in Radarr or Sonarr, skipping...');
+		logger.child({FileName}).warn('Movie not found in Radarr or Sonarr, skipping...');
 	}
 }
