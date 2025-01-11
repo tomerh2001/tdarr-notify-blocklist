@@ -25,7 +25,7 @@ if (failedFiles.totalCount === 0) {
 	process.exit(0);
 }
 
-logger.child({count: failedFiles.totalCount}).info('Got the failed health checks from Tdarr, going over them...');
+logger.child({count: failedFiles.totalCount}).info('Got failed health checks from Tdarr, going over them...');
 for (const failedFile of failedFiles.array) {
 	if (!failedFile.meta) {
 		logger.child({file: failedFile.file}).warn('Failed file does not have metadata, skipping...');

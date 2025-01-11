@@ -9,7 +9,7 @@ export const sonarrAxios = axios.create({baseURL: sonarrUrl, headers: {'X-Api-Ke
 
 export async function getSonarrSeriesId(tdarrRecord: TdarrHealthcheckRecord) {
 	for await (const record of await getSonarrSeries()) {
-		if (record.title === tdarrRecord.file) {
+		if (tdarrRecord.meta?.Directory.includes(record.path)) {
 			return record.id;
 		}
 	}
