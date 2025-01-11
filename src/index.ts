@@ -30,12 +30,10 @@ for (const failedFile of failedFiles.array) {
 		continue;
 	}
 
-	logger.child({filename}).debug('Getting radarr movie');
+	logger.child({filename}).info('Searching for movie in Radarr');
 	const radarrId = await getRadarrMovieId(failedFile.file);
 	if (radarrId) { /** Radarr Flow */
 		logger.child({filename, radarrId}).info('Found movie in Radarr');
 	} else { /** Sonarr Flow */
 	}
-
-	break;
 }
