@@ -3,9 +3,7 @@
 
 import axios from 'axios';
 import {radarrApiKey, radarrUrl} from './environment';
-import logger from './logger';
 
-export const radarrLogger = logger.child({source: 'Radarr'});
 export const radarrAxios = axios.create({baseURL: radarrUrl});
 radarrAxios.interceptors.request.use(config => {
 	config.params ||= {};

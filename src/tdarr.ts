@@ -2,9 +2,7 @@
 
 import axios from 'axios';
 import {tdarrUrl} from './environment';
-import logger from './logger';
 
-export const tdarrLogger = logger.child({source: 'Tdarr'});
 export const tdarrAxios = axios.create({baseURL: tdarrUrl});
 
 export async function getFailedHealthChecks() {
