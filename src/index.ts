@@ -6,10 +6,9 @@
 
 import {tdarrUrl, radarrUrl, sonarrUrl} from './environment';
 import {getFailedHealthChecks, tdarrAxios} from './tdarr';
-import {getRadarrMovieId} from './radarr';
+import {getRadarrMovieId as getRadarrMovie} from './radarr';
 import logger from './logger';
-import {parseFilePath} from './utils';
-import {getSonarrSeriesId} from './sonarr';
+import {getSonarrSeriesId as getSonarrSeries} from './sonarr';
 
 logger.child({tdarrUrl, radarrUrl, sonarrUrl}).info('Started');
 
@@ -33,14 +32,13 @@ for (const failedFile of failedFiles.array) {
 	}
 
 	const {FileName} = failedFile.meta;
+	const movie = await getRadarrMovie(failedFile);
+	const series = await getSonarrSeries(failedFile);
 
-	const radarrId = await getRadarrMovieId(failedFile);
-	const sonarrId = await getSonarrSeriesId(failedFile);
-
-	if (radarrId) {
-		logger.child({FileName, radarrId}).info('Found file in Radarr');
-	} else if (sonarrId) {
-		logger.child({FileName, sonarrId}).info('Found file in Sonarr');
+	if (movie?.id) {
+		logger.child({FileName, radarrId: movie.id}).info('Found file in Radarr');
+	} else if (series?.id) {
+		logger.child({FileName, sonarrId: series.id}).info('Found file in Sonarr');
 	} else {
 		logger.child({FileName}).warn('Movie not found in Radarr or Sonarr, skipping...');
 	}

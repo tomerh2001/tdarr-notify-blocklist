@@ -11,7 +11,7 @@ export const radarrAxios = axios.create({baseURL: radarrUrl, headers: {'X-Api-Ke
 export async function getRadarrMovieId(tdarrRecord: TdarrHealthcheckRecord) {
 	for await (const record of await getRadarMovies()) {
 		if (record.movieFile?.path === tdarrRecord.file) {
-			return record.id;
+			return record;
 		}
 	}
 }
