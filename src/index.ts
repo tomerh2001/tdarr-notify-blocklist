@@ -45,3 +45,5 @@ for (const failedFile of failedFiles.array) {
 		logger.child({FileName}).warn('Movie not found in Radarr or Sonarr, skipping...');
 	}
 }
+
+logger.info('Finished');
