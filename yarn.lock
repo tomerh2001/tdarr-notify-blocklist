@@ -8641,7 +8641,7 @@ __metadata:
     lodash: "npm:^4.17.21"
     pino: "npm:^9.6.0"
     pino-pretty: "npm:^13.0.0"
-    xo: "npm:^0.61.0"
+    xo: "npm:^1.0.0"
   peerDependencies:
     typescript: ^5.7.2
   languageName: unknown
@@ -9273,9 +9273,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"xo@npm:^0.61.0":
-  version: 0.61.1
-  resolution: "xo@npm:0.61.1"
+"xo@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "xo@npm:1.0.0"
   dependencies:
     "@eslint-community/eslint-plugin-eslint-comments": "npm:^4.5.0"
     "@sindresorhus/tsconfig": "npm:^7.0.0"
@@ -9310,7 +9310,7 @@ __metadata:
     typescript-eslint: "npm:^8.32.1"
   bin:
     xo: dist/cli.js
-  checksum: 10c0/3e8eb89b83bec029c74ffceecb7d89448688287bfde01ac6aa4b911bd3a103a230fd308d95f2b32a3359698cdf2de183a535288e356c45fccabda9cb2a7013ad
+  checksum: 10c0/3637de967895f56d7cb5187d445f1ef0a556f190dcf6e71b692f1beaae3a2bb0ac274e55f1d5e45b46c9fdc98bb37b3c865c81cd4600cfdccd6b95de367f8d3c
   languageName: node
   linkType: hard
 
