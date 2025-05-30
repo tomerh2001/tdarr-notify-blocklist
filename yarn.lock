@@ -9266,8 +9266,8 @@ __metadata:
   linkType: hard
 
 "xo@npm:^1.0.0":
-  version: 1.0.1
-  resolution: "xo@npm:1.0.1"
+  version: 1.0.4
+  resolution: "xo@npm:1.0.4"
   dependencies:
     "@eslint-community/eslint-plugin-eslint-comments": "npm:^4.5.0"
     "@sindresorhus/tsconfig": "npm:^7.0.0"
@@ -9302,7 +9302,7 @@ __metadata:
     typescript-eslint: "npm:^8.32.1"
   bin:
     xo: dist/cli.js
-  checksum: 10c0/bdcd9047f70d6cf281cb1c967a790444e6ca37e0f702f01d1de7df33a1b21b11b46d62fcc0294db934c2696921de846170f954f21ef97f430a2f9178cdcd9619
+  checksum: 10c0/11d737c991dd5e8f0709958f4ef86298e9ffe93cb2d1e1f9830ebe9fdc6ec3d93a2017f9cf9635dc4f2df4de33fdbbd2105fbe6622841ec9e5d4c5d299544042
   languageName: node
   linkType: hard
 
